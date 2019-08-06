@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import JapanMap from './JapanMap'
+import Paper from '@material-ui/core/Paper';
 
 import './Card.css';
 
@@ -70,41 +71,43 @@ class Card extends React.Component {
   render() {
     return (
       <div className="Card">
-        <span id="Year" className="strong"> {this.state.data.year} </span> 年くらい前に
+        <Paper>
+          <span id="Year" className="strong"> {this.state.data.year} </span> 年くらい前に
 
-        <span id="Prefecture" className="strong"> {this.state.data.prefecture} </span> で
+          <span id="Prefecture" className="strong"> {this.state.data.prefecture} </span> で
 
-        <div id="Content" className="strong"> {this.state.data.content} </div> してた
+          <div id="Content" className="strong"> {this.state.data.content} </div> してた
 
-        <span id="Name" className="strong"> {this.state.data.name} </span> くん
+          <span id="Name" className="strong"> {this.state.data.name} </span> くん
 
-        <div id="ReactionButtons">
-          <input id="Me"
-                 type="button"
-                 value="自分のこと？"
-                 onClick={this.handleTogleChanged}
-                 disabled={this.state.isMeClicked}
-          />
+          <div id="ReactionButtons">
+            <input id="Me"
+                  type="button"
+                  value="自分のこと？"
+                  onClick={this.handleTogleChanged}
+                  disabled={this.state.isMeClicked}
+            />
 
-          <input id="Friend"
-                 type="button"
-                 value="知り合いのこと？"
-                 onClick={this.handleTogleChanged}
-                 disabled={this.state.isFriendClicked}
-          />
+            <input id="Friend"
+                  type="button"
+                  value="知り合いのこと？"
+                  onClick={this.handleTogleChanged}
+                  disabled={this.state.isFriendClicked}
+            />
 
-          <input id="Like"
-                 type="button"
-                 value={'🤟' + this.state.data.reactionLike}
-                 onClick={this.handleLiked}
-                 disabled={this.state.isLiked}
-          />
-        </div>
+            <input id="Like"
+                  type="button"
+                  value={'🤟' + this.state.data.reactionLike}
+                  onClick={this.handleLiked}
+                  disabled={this.state.isLiked}
+            />
+          </div>
 
-        このエピソードに聞き覚えがある人はここにいます：
-        <div id="JapanMap">
-          <JapanMap reactionMe={this.state.data.reactionMe} reactionFriend={this.state.data.reactionFriend}/> 
-        </div>
+          このエピソードに聞き覚えがある人はここにいます：
+          <div id="JapanMap">
+            <JapanMap reactionMe={this.state.data.reactionMe} reactionFriend={this.state.data.reactionFriend}/> 
+          </div>
+        </Paper>
       </div>
     );
   }
